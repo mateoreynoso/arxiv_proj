@@ -1,0 +1,34 @@
+# Core pipeline
+torch
+transformers
+huggingface_hub
+sentence-transformers
+
+# LangChain ecosystem
+langchain
+langchain-community
+
+# PDF extraction
+pymupdf
+
+# Vector DB
+chromadb
+
+# UI
+streamlit
+
+# ArXiv API
+arxiv
+
+# SQL metadata store
+sqlalchemy
+
+# AWS integration
+boto3
+
+# Azure integration
+azure-storage-blob
+
+# Utilities
+python-dotenv
+tqdm

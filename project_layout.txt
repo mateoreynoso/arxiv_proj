@@ -1,0 +1,44 @@
+arxiv-semantic-search/
+│
+├── data/                  # Ignored in .gitignore
+│   ├── raw_pdfs/          # The downloaded ArXiv papers
+│   └── vector_db/         # The persistent ChromaDB/FAISS files
+│
+├── notebooks/             # Jupyter notebooks for testing chunks and regex cleaning
+│
+├── src/                   # The core pipeline modules
+│   ├── data_ingestion.py  # ArXiv API calls and PDF parsing
+│   ├── text_cleaning.py   # Regex rules and chunking logic
+│   └── embeddings.py      # Hugging Face model integration
+│
+├── app/
+│   └── main.py            # The Streamlit web interface
+│
+├── tests/                 # Your top-K accuracy evaluation scripts
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
+
+
+Phase 1: Simple Baseline (Current Goal)
+
+The core objective is to get text flowing from the API to a local UI.
+
+    Ingestion: Hit the ArXiv API using Python, download the PDFs, and extract string data.
+
+    Processing: Apply standard character splitting to segment papers into uniform text paragraphs.
+
+    Vector Stage: Compute structural embeddings using a scientific model and store them locally.
+
+    Interface: Provide a straightforward search box that scores and displays relevant paragraphs.
+
+Phase 2: Equation-Preserving Twist (Future Expansion)
+
+Once the system works, you swap out the naive text extraction with a pipeline that parses math.
+
+    Vision-Language Parser: Replace basic PDF parsers with a specialized model (like Nougat or Mathpix) that reads layout structures and converts inline/display math into explicit markdown or LaTeX blocks.
+
+    Math-Aware Chunking: Update your tokenizers to ensure mathematical blocks remain whole rather than getting severed mid-equation.
+
+    Enhanced Retrieval: Your vector space can now match queries containing explicit variables or mathematical conditions directly to the formatted equations in the papers.

@@ -1,0 +1,9 @@
+data/raw_pdfs/
+data/vector_db/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.egg-info/
+dist/
+.ipynb_checkpoints/
