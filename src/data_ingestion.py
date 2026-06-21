@@ -7,17 +7,27 @@ Public API:
     search_arxiv(query, max_results) -> list[arxiv.Result]
     download_pdf(result, dest_dir)   -> Path
     extract_text(pdf_path)           -> str
-    ingest(query, max_results)       -> Iterator[dict]
+    ingest(query, max_results)       -> Iterator[PaperRecord]
 """
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
-from typing import Iterator
+from typing import Iterator, TypedDict
 
 import arxiv
 import pymupdf
 from tqdm import tqdm
 import requests
+
+class PaperRecord(TypedDict):
+    arxiv_id:       str
+    title:          str
+    authors:        list[str]
+    abstract:       str
+    pdf_path:       str
+    raw_text:       str
+    published_date: datetime
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 PDF_DIR = DATA_DIR / "raw_pdfs"
@@ -54,7 +64,7 @@ def extract_text(pdf_path: Path) -> str:
     doc = pymupdf.open(filename=str(pdf_path))
     return "\n".join(page.get_text() for page in doc)
 
-def ingest(query, max_results) -> Iterator[dict]:
+def ingest(query, max_results) -> Iterator[PaperRecord]:
 
     results = search_arxiv(query=query,max_results=max_results)
     
@@ -76,5 +86,6 @@ if __name__ == "__main__":
 
     for paper in ingest("2D Turbulence", max_results=3):
         print(paper["arxiv_id"], paper["title"])
-        print(paper["raw_text"][:400])
+        print(paper["raw_text"][:100])
+        print(paper["published_date"])
         print("---")
