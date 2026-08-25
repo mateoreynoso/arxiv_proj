@@ -1,34 +1,39 @@
-# Core pipeline
-torch
-transformers
-huggingface_hub
-sentence-transformers
+# PyTorch — nightly build required for CUDA 13.x (RTX 5070 / Blackwell)
+# Install separately:
+#   pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu132
+# For CPU-only or older GPUs, standard install works:
+#   pip install torch torchvision
 
-# LangChain ecosystem
-langchain
-langchain-community
+# Embedding model
+sentence-transformers==6.0.0
+transformers==5.15.1
+
+# LangChain text splitting
+langchain-text-splitters==1.1.2
 
 # PDF extraction
-pymupdf
+pymupdf==1.28.2
 
 # Vector DB
-chromadb
+chromadb==1.5.9
 
 # UI
-streamlit
+streamlit==1.62.0
 
 # ArXiv API
-arxiv
+arxiv==4.0.1
+
+# LLM API
+groq==1.6.0
 
 # SQL metadata store
 sqlalchemy
 
-# AWS integration
-boto3
-
-# Azure integration
-azure-storage-blob
-
 # Utilities
-python-dotenv
-tqdm
+requests==2.34.2
+tqdm==4.70.0
+python-dotenv==1.2.3
+
+# Cloud storage (Phase 2)
+# boto3
+# azure-storage-blob

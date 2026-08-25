@@ -20,7 +20,7 @@ EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 DB_PATH = Path(__file__).parent.parent / "data" / "vector_db"
 
 def load_model(model_name: str = EMBEDDING_MODEL) -> SentenceTransformer:
-    return SentenceTransformer(model_name, device="cuda")
+    return SentenceTransformer(model_name, device="cpu")
 
 def get_or_create_collection(client: chromadb.ClientAPI, 
                              collection_name: str = "arxiv_papers"

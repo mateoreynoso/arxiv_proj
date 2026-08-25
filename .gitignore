@@ -1,5 +1,6 @@
 data/raw_pdfs/
 data/vector_db/
+data/*.db
 __pycache__/
 *.pyc
 .env
