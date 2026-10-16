@@ -34,6 +34,9 @@ requests==2.34.2
 tqdm==4.70.0
 python-dotenv==1.2.3
 
+# Testing
+pytest
+
 # Cloud storage (Phase 2)
 # boto3
 # azure-storage-blob
